@@ -33,7 +33,10 @@ namespace UnityBuilderAction
                     EditorUserBuildSettings.buildAppBundle = options["customBuildPath"].EndsWith(".aab");
                     if (options.TryGetValue("androidKeystoreName", out string keystoreName) &&
                         !string.IsNullOrEmpty(keystoreName))
-                        PlayerSettings.Android.keystoreName = keystoreName;
+                    {
+                      PlayerSettings.Android.useCustomKeystore = true;
+                      PlayerSettings.Android.keystoreName = keystoreName;
+                    }
                     if (options.TryGetValue("androidKeystorePass", out string keystorePass) &&
                         !string.IsNullOrEmpty(keystorePass))
                         PlayerSettings.Android.keystorePass = keystorePass;
@@ -43,6 +46,23 @@ namespace UnityBuilderAction
                     if (options.TryGetValue("androidKeyaliasPass", out string keyaliasPass) &&
                         !string.IsNullOrEmpty(keyaliasPass))
                         PlayerSettings.Android.keyaliasPass = keyaliasPass;
+                    if (options.TryGetValue("androidTargetSdkVersion", out string androidTargetSdkVersion) &&
+                        !string.IsNullOrEmpty(androidTargetSdkVersion))
+                    {
+                        var targetSdkVersion = AndroidSdkVersions.AndroidApiLevelAuto;
+                        try
+                        {
+                            targetSdkVersion =
+                                (AndroidSdkVersions) Enum.Parse(typeof(AndroidSdkVersions), androidTargetSdkVersion);
+                        }
+                        catch
+                        {
+                            UnityEngine.Debug.Log("Failed to parse androidTargetSdkVersion! Fallback to AndroidApiLevelAuto");
+                        }
+
+                        PlayerSettings.Android.targetSdkVersion = targetSdkVersion;
+                    }
+                    
                     break;
                 }
                 case BuildTarget.StandaloneOSX:
