@@ -1,13 +1,13 @@
-import BaseLayout from '@/components/layout/base-layout';
-import useRedirect from '@/core/routing/use-redirect';
+import React from 'react';
+
+import Home from '@/components/home';
+import HomeLayout from '@/components/layout/home-layout';
 
 const Index = () => {
-  useRedirect('/docs');
-
   return (
-    <BaseLayout>
-      <div style={{ padding: '0 24px' }}>Loading docs...</div>
-    </BaseLayout>
+    <HomeLayout>
+      <Home />
+    </HomeLayout>
   );
 };
 
