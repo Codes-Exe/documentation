@@ -3,6 +3,7 @@
 [![Cats 😺](https://github.com/Codes-Exe/documentation/actions/workflows/cats.yml/badge.svg)](https://github.com/Codes-Exe/documentation/actions/workflows/cats.yml)
 [![👩‍💻](https://github.com/Codes-Exe/documentation/actions/workflows/checks.yml/badge.svg)](https://github.com/Codes-Exe/documentation/actions/workflows/checks.yml)
 [![🚦](https://github.com/Codes-Exe/documentation/actions/workflows/lighthouse-report.yml/badge.svg)](https://github.com/Codes-Exe/documentation/actions/workflows/lighthouse-report.yml)
+[![SLSA generic generator](https://github.com/Codes-Exe/documentation/actions/workflows/generator-generic-ossf-slsa3-publish.yml/badge.svg)](https://github.com/Codes-Exe/documentation/actions/workflows/generator-generic-ossf-slsa3-publish.yml)
 # GameCI
 
 Documentation for open source GameCI projects. You can find the `.md` files inside the
