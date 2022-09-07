@@ -1,9 +1,99 @@
 @import "../../node_modules/antd/dist/antd.less";
 
-@primary-color: rgb(42, 161, 255);
+//
+// Brand
+//
+
+@brand-primary: rgb(61, 192, 148);
+@brand-secondary: rgb(55, 52, 69);
+@brand-tertiary: rgb(240, 242, 245);
+
+html {
+  --brand-primary: @brand-primary;
+  --brand-primary-brighter: saturate(lighten(@brand-primary, 10%), 10%); // needed for primary color on secondary background
+  --brand-secondary: @brand-secondary;
+  --brand-tertiary: @brand-tertiary;
+}
+
+body {
+  // Support animations
+  background: @brand-secondary;
+  overflow-x: hidden;
+}
+
+//
+// Theme
+//
+
+@primary-color: @brand-primary;
+
+//
+// Backgrounds
+//
+
+@body-background: @brand-tertiary;
+@background-color-base: @body-background;
+@layout-body-background: @body-background;
+@component-background: @body-background;
+
+//
+// Typography
+//
+
+@font-size-base: 14px;
+@heading-color: @brand-secondary;
+@text-color: fade(@brand-secondary, 85%);
+@text-color-secondary: fade(@brand-secondary, 45%);
+@heading-1-size: ceil(@font-size-base * 2.30);
+@heading-2-size: ceil(@font-size-base * 2.00);
+@heading-3-size: ceil(@font-size-base * 1.71);
+@heading-4-size: ceil(@font-size-base * 1.42);
+@heading-5-size: ceil(@font-size-base * 1.14);
+
+//
+// Spacing
+//
+
+@typography-title-margin-bottom: 1em;
+.@{typography-prefix-cls} {
+  ul,
+  ol {
+    margin-top: 0.75em;
+    margin-bottom: 1.5em;
+
+    li {
+      margin-bottom: 0.5em;
+    }
+  }
+}
+.@{ant-prefix}-anchor-link-title {
+  padding-bottom: 2px; // prevents hidden overflow
+}
+
+//
+// Header
+//
 
 @layout-header-height: 64px;
+@layout-header-background: rgb(55, 52, 69);
 
-@text-color-secondary: rgba(0, 0, 0, 0.45);
+//
+// Footer
+//
 
-@background-color-base: #f7f7f7;
+@layout-footer-background: @layout-body-background;
+
+//
+// Sider
+//
+
+@layout-sider-background: @layout-body-background;
+.@{layout-prefix-cls}-sider-zero-width-trigger {
+  background: @brand-secondary;
+}
+
+//
+// Menu
+//
+
+@menu-inline-submenu-bg: @layout-body-background;

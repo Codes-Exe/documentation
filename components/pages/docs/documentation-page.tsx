@@ -2,9 +2,11 @@ import { Layout } from 'antd';
 import MarkdownRenderer from '@/components/markdown/markdown-renderer';
 import { PageContext } from '@/components/context/page-context';
 import { ReactNodeLike } from 'prop-types';
-import BaseLayout from '../base-layout';
-import MenuSidebar from './menu-sidebar';
-import AnchorsSidebar from './anchors-sidebar';
+import DocumentationLayout from './documentation-layout';
+import MenuStructureSidebar from './sidebars/menu-structure-sidebar';
+import AnchorsSidebar from './sidebars/anchors-sidebar';
+
+import styles from './documentation-page.module.scss';
 
 const { Content } = Layout;
 
@@ -15,28 +17,28 @@ interface Props {
   meta?: any;
 }
 
-const Page = ({ content, data, meta, children }: Props) => {
+const DocumentationPage = ({ content, data, meta, children }: Props) => {
   return (
     <PageContext.Provider value={meta}>
-      <BaseLayout>
-        <MenuSidebar />
-        <Layout className="site-layout-background">
-          <Content className="page documentation-page">
+      <DocumentationLayout>
+        <MenuStructureSidebar />
+        <Layout>
+          <Content className={styles.documentationContent}>
             {content && <MarkdownRenderer meta={data} document={content} />}
             {children}
           </Content>
         </Layout>
         {content && <AnchorsSidebar document={content} />}
-      </BaseLayout>
+      </DocumentationLayout>
     </PageContext.Provider>
   );
 };
 
-Page.defaultProps = {
+DocumentationPage.defaultProps = {
   content: undefined,
   data: { title: '', date: '' },
   children: null,
   meta: null,
 };
 
-export default Page;
+export default DocumentationPage;

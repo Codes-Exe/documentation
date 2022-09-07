@@ -10,24 +10,28 @@ import { configureStore } from '@reduxjs/toolkit';
 import { reducer } from 'logic';
 import { FirebaseAppProvider } from 'reactfire';
 import config from 'core/config';
+import { AnimatedPageTransition } from '@/core/routing/animated-page-transition';
 
 import '../assets/styles/antd-custom.less';
-import '../assets/styles/vars.css';
-import '../assets/styles/global.css';
-import '../assets/styles/layout.css';
-import '../assets/styles/markdown.css';
-import '../assets/styles/search.css';
 import 'highlight.js/styles/dracula.css';
 
 const store = configureStore({ reducer });
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component: SsrComponent, pageProps: ssrPageProps }: AppProps) {
   return (
     <Provider store={store}>
       <FirebaseAppProvider firebaseConfig={config.firebase}>
         <InstantSearch searchClient={searchClient} indexName={searchIndex}>
           <IconContext.Provider value={{ className: 'anticon' }}>
-            <Component {...pageProps} />
+            <AnimatedPageTransition>
+              {({ Component, pageProps }) => {
+                return Component ? (
+                  <Component {...pageProps} />
+                ) : (
+                  <SsrComponent {...ssrPageProps} />
+                );
+              }}
+            </AnimatedPageTransition>
           </IconContext.Provider>
         </InstantSearch>
       </FirebaseAppProvider>

@@ -1,7 +1,6 @@
 import type { ReactNodeLike } from 'prop-types';
 import { Layout } from 'antd';
 import NavBar from './header/nav-bar';
-import Breadcrumb from './main/breadcrumb';
 import Footer from './footer/footer';
 
 const { Content } = Layout;
@@ -9,27 +8,20 @@ const { Content } = Layout;
 interface Props {
   children: ReactNodeLike;
   showSearch?: boolean;
+  stickyHeader?: boolean;
 }
 
-const BaseLayout = ({ children, showSearch }: Props) => (
+const BaseLayout = ({ children, showSearch, stickyHeader }: Props) => (
   <Layout style={{ minHeight: '100vh' }}>
-    <NavBar showSearch={showSearch} />
-    <Content className="site-layout-main">
-      <Breadcrumb />
-      <Layout
-        hasSider
-        className="site-layout-background"
-        style={{ padding: '24px 0', flexDirection: 'row' }}
-      >
-        {children}
-      </Layout>
-    </Content>
+    <NavBar showSearch={showSearch} stickyHeader={stickyHeader} />
+    <Content>{children}</Content>
     <Footer />
   </Layout>
 );
 
 BaseLayout.defaultProps = {
   showSearch: true,
+  stickyHeader: false,
 };
 
 export default BaseLayout;
