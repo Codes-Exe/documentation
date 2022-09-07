@@ -1,3 +1,7 @@
+[![.github/workflows/search-trigger.yml](https://github.com/Codes-Exe/documentation/actions/workflows/search-trigger.yml/badge.svg)](https://github.com/Codes-Exe/documentation/actions/workflows/search-trigger.yml)
+[![pages-build-deployment](https://github.com/Codes-Exe/documentation/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Codes-Exe/documentation/actions/workflows/pages/pages-build-deployment)
+[![Cats 😺](https://github.com/Codes-Exe/documentation/actions/workflows/cats.yml/badge.svg)](https://github.com/Codes-Exe/documentation/actions/workflows/cats.yml)
+
 # GameCI
 
 Documentation for open source GameCI projects. You can find the `.md` files inside the
